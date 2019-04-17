@@ -4,22 +4,22 @@ import java.util.Date;
 
 public class Log {
 
+    private int image;
     private String task;
-    private Date deadline;
-    private String status;
+    private String deadline;
 
-    public Log(String task, Date deadling, String status)
+    public Log(int image, String task, String deadline)
     {
+        this.image = image;
         this.task = task;
         this.deadline = deadline;
-        this.status = status;
     }
 
-    public Date getDeadline() {
+    public String getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(Date deadline) {
+    public void setDeadline(String deadline) {
         this.deadline = deadline;
     }
 
@@ -31,11 +31,11 @@ public class Log {
         this.task = task;
     }
 
-    public String getStatus() {
-        return status;
+    public int getImage() {
+        return image;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setImage(int image) {
+        this.image = image;
     }
 }
