@@ -12,8 +12,24 @@
         android:id="@+id/toolbar">
 
         <activity android:name=".MainActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+
+        </activity>
+        <activity android:name=".SaveLog">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".LogDescription">
+            <intent-filter>
+                <action android:name="android.intent.action" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

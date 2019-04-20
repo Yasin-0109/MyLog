@@ -6,14 +6,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     private ArrayList<Log> Mlogs;
+    private onItemClickListener mlistener;
 
-    public static class ViewHolder extends  RecyclerView.ViewHolder
+    public interface onItemClickListener{
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(onItemClickListener listener)
+    {
+        mlistener = listener;
+    }
+
+    public class ViewHolder extends  RecyclerView.ViewHolder
     {
         public ImageView imageView;
         public TextView textView;
@@ -24,7 +35,20 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             imageView = itemView.findViewById(R.id.imageView);
             textView = itemView.findViewById(R.id.textView);
             textView2 = itemView.findViewById(R.id.textView2);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(mlistener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            mlistener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
+
     }
 
     public MyAdapter(ArrayList<Log> logs) {
@@ -46,6 +70,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         viewholder.imageView.setImageResource(currentLog.getImage());
         viewholder.textView.setText(currentLog.getTask());
         viewholder.textView2.setText(currentLog.getDeadline());
+
     }
 
     @Override
