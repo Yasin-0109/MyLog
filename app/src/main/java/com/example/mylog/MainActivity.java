@@ -2,6 +2,7 @@ package com.example.mylog;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -26,42 +27,39 @@ public class MainActivity extends AppCompatActivity implements onItemClickListen
     private RecyclerView recyclerView;
     private MyAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    private Button bottom;
+    private FloatingActionButton saveButton;
+    private FloatingActionButton refreshButton;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bottom = findViewById(R.id.save);
+        saveButton = findViewById(R.id.save);
+        refreshButton = findViewById(R.id.refresh);
 
         createLog();
         loadData();
         buildRecyclerView();
 
-        bottom.setOnClickListener(new View.OnClickListener() {
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveData();
+            }
+        });
+        refreshButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 refresh();
-                saveData();
             }
         });
     }
 
-    public void createLog(){
+
+    public void createLog() {
         logs = new ArrayList<>();
-        logs.add(new Log(R.drawable.ic_android, "Android project", "28/04/2019", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n"));
-        logs.add(new Log(R.drawable.ic_assignment, "Hand-in-4", "02/05/2019","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n"));
-        logs.add(new Log(R.drawable.ic_computer_black, "SEP4", "10/05/2019","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n"));
-        logs.add(new Log(R.drawable.ic_android, "Android project", "28/04/2019","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n"));
-        logs.add(new Log(R.drawable.ic_assignment, "Hand-in-4", "02/05/2019","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n"));
-        logs.add(new Log(R.drawable.ic_computer_black, "SEP4", "10/05/2019","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n"));
-        logs.add(new Log(R.drawable.ic_android, "Android project", "28/04/2019","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n"));
-        logs.add(new Log(R.drawable.ic_assignment, "Hand-in-4", "02/05/2019","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n"));
-        logs.add(new Log(R.drawable.ic_computer_black, "SEP4", "10/05/2019","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n"));
-        logs.add(new Log(R.drawable.ic_android, "Android project", "28/04/2019","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n"));
-        logs.add(new Log(R.drawable.ic_assignment, "Hand-in-4", "02/05/2019","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n"));
-        logs.add(new Log(R.drawable.ic_computer_black, "SEP4", "10/05/2019","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n"));
     }
 
     public void buildRecyclerView()
@@ -74,7 +72,6 @@ public class MainActivity extends AppCompatActivity implements onItemClickListen
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener(MainActivity.this);
-
 
     }
     public void removeItem(int position) {
@@ -122,6 +119,11 @@ public class MainActivity extends AppCompatActivity implements onItemClickListen
         startActivity(descriptionIntent);
     }
 
+    @Override
+    public void onDeleteClick(int position) {
+        removeItem(position);
+    }
+
     public void refresh()
     {
         Intent intent = getIntent();
@@ -129,10 +131,12 @@ public class MainActivity extends AppCompatActivity implements onItemClickListen
         String Deadline = intent.getStringExtra("saveDeadline");
         String Description = intent.getStringExtra("saveDescription");
 
-        logs.add(new Log(R.drawable.ic_assignment,Task,Deadline,Description));
+        logs.add(new Log(R.drawable.ic_assignment, Task, Deadline, Description));
         adapter.notifyItemInserted(logs.size());
 
     }
+
+
 
     private void saveData() {
         Toast.makeText(this, "Log saved successfully", Toast.LENGTH_SHORT).show();
@@ -155,4 +159,8 @@ public class MainActivity extends AppCompatActivity implements onItemClickListen
             logs = new ArrayList<>();
         }
     }
+
+
+
+
 }
