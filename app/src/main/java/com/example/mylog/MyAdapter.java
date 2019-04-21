@@ -30,6 +30,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         public TextView textView;
         public TextView textView2;
 
+
         public ViewHolder(View itemView){
             super(itemView);
             imageView = itemView.findViewById(R.id.imageView);

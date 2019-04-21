@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -30,12 +31,19 @@ public class SaveLog extends AppCompatActivity {
         setContentView(R.layout.save_log);
 
         image = (ImageView)findViewById(R.id.imageView2);
-        task = (EditText)findViewById(R.id.task);
-        deadline = (EditText)findViewById(R.id.deadline);
-        description = (EditText)findViewById(R.id.description);
+        task = (EditText)findViewById(R.id.tasksave);
+        deadline = (EditText)findViewById(R.id.deadlinesave);
+        description = (EditText)findViewById(R.id.descriptionsave);
         header = (TextView)findViewById(R.id.descriptionheader);
-        saveButton = (Button)findViewById(R.id.savebutton);
+        saveButton = (Button)findViewById(R.id.saveButton);
         header.setText("Enter description");
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveLog();
+            }
+        });
 
     }
 
@@ -65,5 +73,16 @@ public class SaveLog extends AppCompatActivity {
         return true;
     }
 
+    public void saveLog()
+    {
+        Toast.makeText(this, "Log saved successfully", Toast.LENGTH_SHORT).show();
+        Intent saveIntent = new Intent(this, MainActivity.class);
+
+        saveIntent.putExtra("saveTask", task.getText().toString());
+        saveIntent.putExtra("saveDeadline", deadline.getText().toString());
+        saveIntent.putExtra("saveDescription", description.getText().toString());
+
+        startActivity(saveIntent);
+    }
 
 }

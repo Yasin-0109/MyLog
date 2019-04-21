@@ -6,20 +6,20 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/task"
+        android:id="@+id/tasksave"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Task"
-        app:layout_constraintBottom_toTopOf="@+id/deadline"
+        app:layout_constraintBottom_toTopOf="@+id/deadlinesave"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <EditText
-        android:id="@+id/deadline"
+        android:id="@+id/deadlinesave"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -29,22 +29,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/task" />
+        app:layout_constraintTop_toBottomOf="@+id/tasksave" />
 
     <EditText
-        android:id="@+id/description"
+        android:id="@+id/descriptionsave"
         android:layout_width="350dp"
         android:layout_height="192dp"
         android:ems="10"
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/savebutton"
+        app:layout_constraintBottom_toTopOf="@+id/saveButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descriptionheader" />
 
     <Button
-        android:id="@+id/savebutton"
+        android:id="@+id/saveButton"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:text="Save"
@@ -52,13 +52,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/description" />
+        app:layout_constraintTop_toBottomOf="@+id/descriptionsave" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="350dp"
         android:layout_height="155dp"
-        app:layout_constraintBottom_toTopOf="@+id/task"
+        app:layout_constraintBottom_toTopOf="@+id/tasksave"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,10 +70,10 @@
         android:layout_width="350dp"
         android:layout_height="32dp"
         android:text="Enter description"
-        app:layout_constraintBottom_toTopOf="@+id/description"
+        app:layout_constraintBottom_toTopOf="@+id/descriptionsave"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/deadline" />
+        app:layout_constraintTop_toBottomOf="@+id/deadlinesave" />
 
 </android.support.constraint.ConstraintLayout>
