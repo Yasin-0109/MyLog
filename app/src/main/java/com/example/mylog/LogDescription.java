@@ -13,7 +13,7 @@ public class LogDescription extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.log_description);
+        setContentView(R.layout.activity_log_description);
 
         Intent intent = getIntent();
         String Task = intent.getStringExtra("Task");

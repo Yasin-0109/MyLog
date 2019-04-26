@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.mylog.MyAdapter.onItemClickListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements onItemClickListen
     private FloatingActionButton saveButton;
     private FloatingActionButton refreshButton;
 
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,15 @@ public class MainActivity extends AppCompatActivity implements onItemClickListen
         createLog();
         loadData();
         buildRecyclerView();
+
+        firebaseAuth = firebaseAuth.getInstance();
+
+        if(firebaseAuth.getCurrentUser() == null){
+            finish();
+            startActivity(new Intent(this, Login.class));
+        }
+
+        FirebaseUser user = firebaseAuth.getCurrentUser();
 
 
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -97,6 +109,13 @@ public class MainActivity extends AppCompatActivity implements onItemClickListen
             case R.id.action_item2:
                 Intent intent2 = new Intent(this, SaveLog.class);
                 this.startActivity(intent2);
+                break;
+
+            case R.id.action_item3:
+                firebaseAuth.signOut();
+                finish();
+                Intent intent3 = new Intent(this, Login.class);
+                this.startActivity(intent3);
                 break;
 
             default:
@@ -159,8 +178,4 @@ public class MainActivity extends AppCompatActivity implements onItemClickListen
             logs = new ArrayList<>();
         }
     }
-
-
-
-
 }

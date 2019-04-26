@@ -15,4 +15,10 @@
         app:showAsAction="never"
         />
 
+    <item
+        android:id="@+id/action_item3"
+        android:title="Log out"
+        app:showAsAction="never"
+        />
+
 </menu>

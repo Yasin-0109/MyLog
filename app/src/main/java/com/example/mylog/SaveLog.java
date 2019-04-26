@@ -28,7 +28,7 @@ public class SaveLog extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.save_log);
+        setContentView(R.layout.activity_save_log);
 
         image = (ImageView)findViewById(R.id.imageView2);
         task = (EditText)findViewById(R.id.tasksave);
