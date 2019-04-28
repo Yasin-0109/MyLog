@@ -15,6 +15,7 @@ public class LogDescription extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_description);
 
+        //displays log info in this activity using intents
         Intent intent = getIntent();
         String Task = intent.getStringExtra("Task");
         String Deadline = intent.getStringExtra("Deadline");

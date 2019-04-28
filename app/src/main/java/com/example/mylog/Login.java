@@ -30,6 +30,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //Checks in a user is logged in
         firebaseAuth = FirebaseAuth.getInstance();
         if(firebaseAuth.getCurrentUser() != null){
             finish();
@@ -60,6 +61,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         }
     }
 
+    //login authentication using firebase
     public void login(){
         String email = Email.getText().toString();
         String password = Password.getText().toString();
@@ -86,6 +88,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                         if(task.isSuccessful()){
                             finish();
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        }else {
+                            Toast.makeText(getApplicationContext(), "Wrong email or password",Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

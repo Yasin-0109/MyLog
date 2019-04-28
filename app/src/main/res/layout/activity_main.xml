@@ -12,7 +12,8 @@
        android:layout_height="match_parent"
        android:background="@android:color/white"
        android:padding="4dp"
-       android:scrollbars="vertical"/>
+       android:scrollbars="vertical"
+       android:layout_marginBottom="55dp"/>
 
 
    <android.support.design.widget.FloatingActionButton
@@ -21,8 +22,8 @@
        android:layout_height="wrap_content"
        android:layout_alignParentEnd="true"
        android:layout_alignParentBottom="true"
-       android:layout_marginEnd="28dp"
-       android:layout_marginBottom="52dp"
+       android:layout_marginEnd="33dp"
+       android:layout_marginBottom="65dp"
        android:clickable="true"
        app:srcCompat="@drawable/ic_autorenew" />
 
@@ -32,10 +33,24 @@
        android:layout_height="wrap_content"
        android:layout_above="@+id/refresh"
        android:layout_alignParentEnd="true"
-       android:layout_marginEnd="30dp"
-       android:layout_marginBottom="21dp"
+       android:layout_marginEnd="33dp"
+       android:layout_marginBottom="17dp"
        android:clickable="true"
        app:srcCompat="@drawable/ic_save" />
+
+   <TextView
+       android:id="@+id/qoute"
+       android:layout_width="360dp"
+       android:layout_height="52dp"
+       android:layout_alignParentStart="true"
+       android:layout_alignParentEnd="true"
+       android:layout_alignParentBottom="true"
+       android:layout_marginStart="26dp"
+       android:layout_marginEnd="26dp"
+       android:layout_marginBottom="2dp"
+       android:text="TextView"
+       android:textColor="@color/colorPrimaryDark"
+       android:textSize="12sp" />
 
 
 </RelativeLayout>

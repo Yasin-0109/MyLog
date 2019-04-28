@@ -73,6 +73,8 @@ public class SaveLog extends AppCompatActivity {
         return true;
     }
 
+
+    //sends log info to recyclerview in the main activity using intents
     public void saveLog()
     {
         Toast.makeText(this, "Log saved successfully", Toast.LENGTH_SHORT).show();

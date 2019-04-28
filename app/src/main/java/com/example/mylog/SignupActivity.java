@@ -64,6 +64,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
+    //singin authentication using firebase
     public void signIn(){
         String email = Email.getText().toString();
         String password = Password.getText().toString();
